@@ -68,4 +68,11 @@ public class CruisePreferencePage
 	public void init(IWorkbench workbench) {
 	}
 	
+	@Override
+	public boolean performOk() {
+		boolean status = super.performOk();
+		CruiseclipsePlugin.getDefault().initCruiseMonitor();
+		return status;
+	}
+	
 }

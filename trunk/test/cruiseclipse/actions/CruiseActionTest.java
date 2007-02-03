@@ -13,7 +13,7 @@ public class CruiseActionTest extends MockObjectTestCase {
 		TestProject project = new TestProject();
 		IPackageFragment packageFragment = project.createPackage("pack1");
 		@SuppressWarnings("unused") IType type = project.createType(packageFragment, "Filename.java", "public class Filename{}");
-		CruiseAction action = new CruiseAction(new CruiseMonitor("file:///C:/DevTools/data/CruiseControl Status Page.htm", 10000));
+		CruiseAction action = new CruiseAction(new CruiseMonitor());
 		action.getCurrentBuildStatus();
 	}
 	

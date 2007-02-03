@@ -2,6 +2,8 @@ package org.cruiseclipse.plugin;
 
 import java.util.List;
 
+import cruiseclipse.preferences.PreferenceInitializer;
+
 import junit.framework.TestCase;
 
 public class CruisePageParserTest extends TestCase {
@@ -10,8 +12,7 @@ public class CruisePageParserTest extends TestCase {
 
 	@Override
 	protected void setUp() throws Exception {
-		parser = new CruisePageParser(
-				"file:///C:/DevTools/data/CruiseControl Status Page.htm");
+		parser = new CruisePageParser(PreferenceInitializer.DEFAULT_URL);
 	}
 
 	public void testCruisePageLoadsUp() {

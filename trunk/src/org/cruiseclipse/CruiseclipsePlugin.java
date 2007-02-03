@@ -22,6 +22,7 @@ public class CruiseclipsePlugin extends AbstractUIPlugin {
 	 * The constructor.
 	 */
 	public CruiseclipsePlugin() {
+		cruiseMonitor = new CruiseMonitor();
 		plugin = this;
 	}
 
@@ -71,7 +72,7 @@ public class CruiseclipsePlugin extends AbstractUIPlugin {
 		String url = getPreferenceStore().getString(PreferenceConstants.P_BUILD_PAGE_URL);
 		int interval = getPreferenceStore().getInt(PreferenceConstants.P_POLL_INTERVAL);
 		try {
-			cruiseMonitor = new CruiseMonitor(url, interval);
+			cruiseMonitor.init(url, interval);
 		} catch (MalformedURLException e) {
 			System.out.println("Wrong URL");
 			e.printStackTrace();
