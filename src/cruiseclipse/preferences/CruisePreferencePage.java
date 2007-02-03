@@ -56,9 +56,9 @@ public class CruisePreferencePage
 //		}, getFieldEditorParent()));
 		
 		addField(
-			new StringFieldEditor(PreferenceConstants.P_BUILD_PAGE_URL, "Enter the Cruise Build Page URL:", getFieldEditorParent()));
+			new StringFieldEditor(PreferenceConstants.P_BUILD_PAGE_URL, "CruiseControl Build Page URL:", getFieldEditorParent()));
 		
-		addField(new IntegerFieldEditor(PreferenceConstants.P_POLL_INTERVAL,"Refresh once every ",getFieldEditorParent(),6));
+		addField(new IntegerFieldEditor(PreferenceConstants.P_POLL_INTERVAL,"Refresh once every(ms) ",getFieldEditorParent(),6));
 		
 	}
 
