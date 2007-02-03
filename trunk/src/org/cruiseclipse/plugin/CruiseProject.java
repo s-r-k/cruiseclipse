@@ -64,7 +64,7 @@ public class CruiseProject implements Comparable<CruiseProject> {
 	}
 
 	public String getTimeSinceLastBuild() {
-		StringBuffer message = new StringBuffer("Last Build was ");
+		StringBuffer message = new StringBuffer("");
 		Element timeSinceLastBuild = (Element) element.findAllElements("td").get(2);
 		String contentText = timeSinceLastBuild.getContentText();
 		DateTime diff = diff(contentText);
@@ -73,10 +73,10 @@ public class CruiseProject implements Comparable<CruiseProject> {
 		if (diff != null) {
 			if (diff.getHourOfDay() == 5) {
 				minutes = diff.getMinuteOfHour() - 30;
-				message.append(minutes + " minute(s) ago");
+				message.append(minutes + " minute(s)");
 			}else {
 				hours = diff.getHourOfDay() - 5;
-				message.append(hours + " hour(s) ago");
+				message.append(hours + " hour(s)");
 			}
 		}
 		return message.toString();
