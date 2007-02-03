@@ -1,8 +1,6 @@
 #labels Phase-Requirements
 Upcoming features for this plugin
 
-= Introduction =
-
 -Reflect preference changed immediately (should not require restart)
 
 -Use RSS feeds as another strategy instead of HTML parsing
