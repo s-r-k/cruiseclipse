@@ -1,0 +1,9 @@
+#labels Phase-Requirements
+= Features =
+
+  * Show build summary for multiple projects hosted on a cruise instance
+  * Auto refresh at configurable intervals
+  * Explicit manual refresh
+  * Preference page to configure build page URL and poll interval
+
+See the [TodoList] for upcoming features
