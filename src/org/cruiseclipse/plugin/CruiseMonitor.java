@@ -8,14 +8,17 @@ public class CruiseMonitor {
 
 	private CruiseControlDataSource cruiseControlDataSource;
 	private List<CruiseListener> listeners;
+	private volatile Thread updateThread;
 
-	public CruiseMonitor(String buildPageURL, int pollInterval) throws MalformedURLException {
+	public CruiseMonitor() {
 		listeners = new ArrayList<CruiseListener>();
-		cruiseControlDataSource = CCProxy.newInstance(new CruisePageParser(
-				buildPageURL));
+	}
 
-		Thread thread = new Thread(new BuildPageUpdater(pollInterval));
-		thread.start();
+	public void init(String buildPageURL, int pollInterval) throws MalformedURLException {
+		cruiseControlDataSource = CCProxy.newInstance(new CruisePageParser(buildPageURL));
+		
+		updateThread = new Thread(new BuildPageUpdater(pollInterval));
+		updateThread.start();
 	}
 
 	public String currentStatus() {
@@ -58,7 +61,8 @@ public class CruiseMonitor {
 		}
 
 		public void run() {
-			while (true) {
+			Thread thisThread = Thread.currentThread();
+			while (updateThread == thisThread) {
 				try {
 					Thread.sleep(interval);
 					for (CruiseListener listener: listeners) {
