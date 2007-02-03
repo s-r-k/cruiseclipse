@@ -3,18 +3,6 @@ Upcoming features for this plugin
 
 = Introduction =
 
--Reflect preference changed immediately (should not require restart
+-Reflect preference changed immediately (should not require restart)
 
 -Use RSS feeds as another strategy instead of HTML parsing
-
-
-
-
-#= Details =
-
-#Add your content here.  Format your content with:
- # * Text in *bold* or _italic_
-  #* Headings, paragraphs, and lists
-  #* Automatic links to other wiki pages
-
-
