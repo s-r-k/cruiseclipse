@@ -1,6 +1,7 @@
 package cruiseclipse.views;
 
-import org.cruiseclipse.plugin.CruiseProject;
+import org.cruiseclipse.plugin.HTMLProject;
+import org.cruiseclipse.plugin.Project;
 import org.eclipse.jface.viewers.ITableColorProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -15,25 +16,25 @@ class CruiseViewLabelProvider extends LabelProvider implements ITableLabelProvid
 	private final Image buildFailed = CruiseView.createImage("icons/fail.jpg");
 
 	public String getColumnText(Object obj, int index) {
-		CruiseProject project = (CruiseProject) obj;
+		Project project = (Project) obj;
 		switch (index) {
 		case 0:
-			return project.getName();
+			return project.name();
 		case 1:
-			return project.getCurrentStatus();
+			return project.currentStatus();
 		case 2:
-			return project.getCurrentBuildLabel();
+			return project.currentBuildLabel();
 		case 3:
-			return project.getTimeSinceLastBuild();
+			return project.timeSinceLastBuild();
 		}
 		return getText(obj);
 	}
 
 	public Image getColumnImage(Object obj, int index) {
-		CruiseProject project = (CruiseProject) obj;
+		Project project = (Project) obj;
 		switch (index) {
 		case 0: return eclipseIcon;
-		case 1: return project.isPassed()? buildPassed: buildFailed;
+		case 1: return project.isGreen()? buildPassed: buildFailed;
 		}
 		return getImage(obj);
 	}
@@ -44,10 +45,10 @@ class CruiseViewLabelProvider extends LabelProvider implements ITableLabelProvid
 	}
 
 	public Color getForeground(Object obj, int columnIndex) {
-		CruiseProject project = (CruiseProject) obj;
+		Project project = (Project) obj;
 		if (project.hasStatusChanged()) {
-			System.out.println("Status of project:" + project.getName() + "has changed.");
-			if (project.isPassed())
+			System.out.println("Status of project:" + project.name() + "has changed.");
+			if (project.isGreen())
 				return new Color(null, 0, 255, 0);
 			return new Color(null, 255, 0, 0);
 		}

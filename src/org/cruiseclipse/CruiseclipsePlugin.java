@@ -1,7 +1,6 @@
 package org.cruiseclipse;
 
-import java.net.MalformedURLException;
-
+import org.cruiseclipse.plugin.CCProxy;
 import org.cruiseclipse.plugin.CruiseMonitor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -14,10 +13,11 @@ import cruiseclipse.preferences.PreferenceConstants;
  */
 public class CruiseclipsePlugin extends AbstractUIPlugin {
 
-	//The shared instance.
+	// The shared instance.
 	private static CruiseclipsePlugin plugin;
+
 	public CruiseMonitor cruiseMonitor;
-	
+
 	/**
 	 * The constructor.
 	 */
@@ -26,14 +26,14 @@ public class CruiseclipsePlugin extends AbstractUIPlugin {
 		plugin = this;
 	}
 
-	public CruiseMonitor getCruiseMonitor(){
+	public CruiseMonitor getCruiseMonitor() {
 		return cruiseMonitor;
 	}
 
 	public void setCruiseMonitor(CruiseMonitor cruiseMonitor) {
 		this.cruiseMonitor = cruiseMonitor;
 	}
-	
+
 	/**
 	 * This method is called upon plug-in activation
 	 */
@@ -58,24 +58,29 @@ public class CruiseclipsePlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns an image descriptor for the image file at the given
-	 * plug-in relative path.
-	 *
-	 * @param path the path
+	 * Returns an image descriptor for the image file at the given plug-in
+	 * relative path.
+	 * 
+	 * @param path
+	 *            the path
 	 * @return the image descriptor
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return AbstractUIPlugin.imageDescriptorFromPlugin("Cruiseclipse", path);
 	}
-	
+
 	public void initCruiseMonitor() {
-		String url = getPreferenceStore().getString(PreferenceConstants.P_BUILD_PAGE_URL);
-		int interval = getPreferenceStore().getInt(PreferenceConstants.P_POLL_INTERVAL);
-		try {
-			cruiseMonitor.init(url, interval);
-		} catch (MalformedURLException e) {
-			System.out.println("Wrong URL");
-			e.printStackTrace();
-		}
+		String url = getPreferenceStore().getString(
+				PreferenceConstants.P_BUILD_PAGE_URL);
+		int interval = getPreferenceStore().getInt(
+				PreferenceConstants.P_POLL_INTERVAL);
+		if (isFeed(url))
+			cruiseMonitor.init(CCProxy.feedSource(url), interval);
+		else
+			cruiseMonitor.init(CCProxy.pageSource(url), interval);
+	}
+
+	private boolean isFeed(String url) {
+		return url.endsWith("rss");
 	}
 }

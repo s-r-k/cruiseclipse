@@ -16,6 +16,6 @@ public interface CruiseControlDataSource {
 
 	public String getCurrentBuildLabel(String projectName);
 
-	public List<CruiseProject> getProjects();
+	public List<Project> getProjects();
 
 }

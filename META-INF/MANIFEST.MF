@@ -17,5 +17,8 @@ Bundle-ClassPath: lib/cglib-full-2.0.2.jar,
  lib/jmock-1.0.1.jar,
  lib/jmock-cglib-1.0.1.jar,
  lib/joda-time-1.1.jar,
- bin/
+ bin/,
+ lib/jdom.jar,
+ lib/rome-0.9.jar,
+ .
 Export-Package: org.cruiseclipse

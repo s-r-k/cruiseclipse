@@ -9,5 +9,8 @@
 	<classpathentry kind="lib" path="lib/joda-time-1.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="/opt/eclipse/plugins/org.eclipse.jdt.junit4.runtime_1.0.1.r321_v20060905.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
+	<classpathentry kind="lib" path="lib/rome-0.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+
+<title>CruiseControl Results</title>
+<link>http://home.raibledesigns.com:8280</link>
+<description>Summary of the project build results.</description>
+<language>en-us</language>
+
+<item>
+<title>appfuse-2.x FAILED 02/05/2007 05:25:58</title>
+<description>Build FAILED</description>
+<pubDate>02/05/2007 05:25:58</pubDate>
+<link>http://home.raibledesigns.com:8280/buildresults/appfuse-2.x</link>
+</item>
+
+<item>
+<title>appfuse-jsf passed 01/31/2007 03:19:59</title>
+<description>Build passed</description>
+<pubDate>01/31/2007 03:19:59</pubDate>
+<link>http://home.raibledesigns.com:8280/buildresults/appfuse-jsf</link>
+</item>
+
+<item>
+<title>appfuse-spring passed 01/31/2007 04:28:44</title>
+<description>Build passed</description>
+<pubDate>01/31/2007 04:28:44</pubDate>
+<link>http://home.raibledesigns.com:8280/buildresults/appfuse-spring</link>
+</item>
+
+<item>
+<title>appfuse-struts passed 01/31/2007 03:09:07</title>
+<description>Build passed</description>
+<pubDate>01/31/2007 03:09:07</pubDate>
+<link>http://home.raibledesigns.com:8280/buildresults/appfuse-struts</link>
+</item>
+
+<item>
+<title>appfuse-tapestry passed 01/31/2007 03:39:20</title>
+<description>Build passed</description>
+<pubDate>01/31/2007 03:39:20</pubDate>
+<link>http://home.raibledesigns.com:8280/buildresults/appfuse-tapestry</link>
+</item>
+
+<item>
+<title>appfuse-webwork passed 01/23/2007 21:49:51</title>
+<description>Build passed</description>
+<pubDate>01/23/2007 21:49:51</pubDate>
+<link>http://home.raibledesigns.com:8280/buildresults/appfuse-webwork</link>
+</item>
+
+<item>
+<title>equinox-1.x FAILED 02/05/2007 06:08:16</title>
+<description>Build FAILED</description>
+<pubDate>02/05/2007 06:08:16</pubDate>
+<link>http://home.raibledesigns.com:8280/buildresults/equinox-1.x</link>
+</item>
+
+</channel>
+</rss>
