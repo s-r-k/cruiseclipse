@@ -7,7 +7,7 @@ import java.lang.reflect.Proxy;
 public class CCProxy implements java.lang.reflect.InvocationHandler {
 	private CruiseControlDataSource obj;
 
-	public static CruiseControlDataSource newInstance(CruiseControlDataSource obj) {
+	private static CruiseControlDataSource newInstance(CruiseControlDataSource obj) {
 		return (CruiseControlDataSource) Proxy.newProxyInstance(obj.getClass()
 				.getClassLoader(), obj.getClass().getInterfaces(), new CCProxy(obj));
 	}
@@ -30,5 +30,13 @@ public class CCProxy implements java.lang.reflect.InvocationHandler {
 			throw new RuntimeException("unexpected invocation exception: "+ e.getMessage());
 		}
 		return result;
+	}
+	
+	public static CruiseControlDataSource feedSource(String feedURL) {
+		return newInstance(new CruiseFeedReader(feedURL));
+	}
+
+	public static CruiseControlDataSource pageSource(String pageURL) {
+		return newInstance(new CruisePageParser(pageURL));
 	}
 }

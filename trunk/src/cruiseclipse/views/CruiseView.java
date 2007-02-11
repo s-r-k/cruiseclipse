@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import org.cruiseclipse.CruiseclipsePlugin;
 import org.cruiseclipse.plugin.CruiseListener;
 import org.cruiseclipse.plugin.CruiseMonitor;
-import org.cruiseclipse.plugin.CruiseProject;
+import org.cruiseclipse.plugin.HTMLProject;
+import org.cruiseclipse.plugin.Project;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -167,7 +168,7 @@ public class CruiseView extends ViewPart {
 			public void run() {
 				Object obj = ((IStructuredSelection) viewer.getSelection()).getFirstElement();
 				showMessage(CruiseclipsePlugin.getDefault().getCruiseMonitor()
-						.getCurrentStatus(((CruiseProject) obj).getDetails()));
+						.getCurrentStatus(((Project) obj).getDetails()));
 			}
 		};		
 	}

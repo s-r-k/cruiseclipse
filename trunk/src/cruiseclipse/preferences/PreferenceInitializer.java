@@ -9,9 +9,9 @@ import org.eclipse.jface.preference.IPreferenceStore;
  */
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
-	public static final String DEFAULT_URL = "file:///home/srk/dev/cruiseclipse/index.jsp";
+	public static final String DEFAULT_URL = "http://home.raibledesigns.com:8280/rss";
 //	"file:///C:/DevTools/data/CruiseControl Status Page.htm";
-
+//	http://home.raibledesigns.com:8280/rss
 	/*
 	 * (non-Javadoc)
 	 * 

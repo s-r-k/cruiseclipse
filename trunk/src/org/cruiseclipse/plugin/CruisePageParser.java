@@ -15,10 +15,14 @@ public class CruisePageParser implements CruiseControlDataSource {
 
 	private Source buildPage;
 	private URL buildPageURL;
-	private List<CruiseProject> projects;
+	private List<Project> projects = new ArrayList<Project>();
 	
-	public CruisePageParser(String buildPageURL) throws MalformedURLException  {
-		this.buildPageURL = new URL(buildPageURL);
+	public CruisePageParser(String buildPageURL) {
+		try {
+			this.buildPageURL = new URL(buildPageURL);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 		getLatestBuildPage();
 		loadProjects();
 	}
@@ -34,11 +38,10 @@ public class CruisePageParser implements CruiseControlDataSource {
 
 	@SuppressWarnings("unchecked")
 	void loadProjects() {
-		projects = new ArrayList<CruiseProject>();
 		Element body = (Element) buildPage.findAllElements("tbody").get(1);
 		List<Element> projectElements = body.findAllElements("tr");
 		for (Element element : projectElements) {
-			projects.add(new CruiseProject(element));
+			projects.add(new HTMLProject(element));
 		}
 		System.out.println("Projects Loaded");
 	}
@@ -51,7 +54,7 @@ public class CruisePageParser implements CruiseControlDataSource {
 		List<Element> projectElements = body.findAllElements("tr");
 		String lastUpdatedTime = getLastUpdatedTime();
 		for (int i = 0; i < projectElements.size(); i++) {
-			((CruiseProject) projects.get(i)).update(projectElements.get(i), lastUpdatedTime);
+			((Project) projects.get(i)).update(projectElements.get(i), lastUpdatedTime);
 		}	
 	}
 
@@ -65,8 +68,8 @@ public class CruisePageParser implements CruiseControlDataSource {
 
 	public List<String> getProjectNames() {
 		List<String> names = new ArrayList<String>();
-		for (CruiseProject project : projects) {
-			names.add(project.getName());
+		for (Project project : projects) {
+			names.add(project.name());
 		}
 		return names;
 	}
@@ -78,23 +81,23 @@ public class CruisePageParser implements CruiseControlDataSource {
 	}
 
 	public String getCurrentStatus(String projectName) {
-		return getProject(projectName).getCurrentStatus();
+		return getProject(projectName).currentStatus();
 	}
 
 	public String getCurrentBuildLabel(String projectName) {
-		return getProject(projectName).getCurrentBuildLabel();
+		return getProject(projectName).currentBuildLabel();
 	}
 
-	private CruiseProject getProject(String projectName) {
-		for (CruiseProject project : projects) {
-			if(projectName.equals(project.getName())){
+	private Project getProject(String projectName) {
+		for (Project project : projects) {
+			if(projectName.equals(project.name())){
 				return project;
 			}
 		}
 		return null;
 	}
 
-	public List<CruiseProject> getProjects() {
+	public List<Project> getProjects() {
 		return projects;
 	}
 }

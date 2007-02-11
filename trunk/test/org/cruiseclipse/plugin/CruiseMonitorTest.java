@@ -17,13 +17,13 @@ public class CruiseMonitorTest extends TestCase {
 	
 	@SuppressWarnings("deprecation")
 	public void xtestDate() throws Exception {
-		Date date = new CruiseProject(null).getDate("14/10/2005 07:53:26");
+		Date date = new HTMLProject(null).getDate("14/10/2005 07:53:26");
 		assertEquals(Calendar.OCTOBER, date.getMonth());
 		assertEquals(7, date.getHours());
 	}
 	
 	public void testname() throws Exception {
-		CruiseProject cruiseProject = new CruiseProject(null);
+		HTMLProject cruiseProject = new HTMLProject(null);
 		cruiseProject.update(null, "18:45");
 		DateTime dateTime = cruiseProject.diff("14/10/2005 18:43:26");
 		
