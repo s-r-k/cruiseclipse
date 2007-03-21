@@ -70,6 +70,7 @@ public class CruiseclipsePlugin extends AbstractUIPlugin {
 	}
 
 	public void initCruiseMonitor() {
+		if(!getPreferenceStore().getBoolean(PreferenceConstants.P_ENABLED)) return;
 		String url = getPreferenceStore().getString(
 				PreferenceConstants.P_BUILD_PAGE_URL);
 		int interval = getPreferenceStore().getInt(

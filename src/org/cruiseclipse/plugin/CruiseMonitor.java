@@ -18,7 +18,7 @@ public class CruiseMonitor {
 		this.cruiseControlDataSource = source;
 		updateThread = new Thread(new BuildPageUpdater(interval));
 		updateThread.start();
-		
+		refresh();
 	}
 	
 	@Deprecated
@@ -48,6 +48,14 @@ public class CruiseMonitor {
 
 	public void refresh() {
 		cruiseControlDataSource.updateProjects();
+		updateListeners();
+	}
+
+	void updateListeners() {
+		System.out.println("Updating listeners...");
+		for (CruiseListener listener: listeners) {
+			listener.update();
+		}
 	}
 
 	public void addListener(CruiseListener listener) {
@@ -70,9 +78,7 @@ public class CruiseMonitor {
 			while (updateThread == thisThread) {
 				try {
 					Thread.sleep(interval);
-					for (CruiseListener listener: listeners) {
-						listener.update();
-					}
+					updateListeners();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
