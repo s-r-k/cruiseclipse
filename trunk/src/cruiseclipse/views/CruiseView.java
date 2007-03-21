@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.cruiseclipse.CruiseclipsePlugin;
 import org.cruiseclipse.plugin.CruiseListener;
 import org.cruiseclipse.plugin.CruiseMonitor;
-import org.cruiseclipse.plugin.HTMLProject;
 import org.cruiseclipse.plugin.Project;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
@@ -159,7 +158,6 @@ public class CruiseView extends ViewPart {
 				.createFromImage(createImage("icons/refresh_nav.gif"))) {
 			public void run() {
 				CruiseclipsePlugin.getDefault().getCruiseMonitor().refresh();
-				getViewer().refresh();
 			}
 		};
 		refreshAction.setToolTipText("Refresh View");
