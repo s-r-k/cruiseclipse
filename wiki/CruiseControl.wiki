@@ -1,4 +1,4 @@
 #labels Featured
 CruiseControl is a framework for a continuous build process. It includes, but is not limited to, plugins for email notification, Ant, and various source control tools. A web interface is provided to view the details of the current and previous builds.
 
-Refer to http://cruisecontrol.sourceforge.net for details
+Refer to the [http://cruisecontrol.sourceforge.net cruisecontrol project page] for details
